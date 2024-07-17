@@ -1,0 +1,125 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer utilities {
+    @variants responsive {
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .no-scrollbar {
+            -ms-overflow-style: none; /* IE and Edge */
+            scrollbar-width: none; /* Firefox */
+        }
+    }
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.wave:before,
+.wave:after {
+    position: absolute;
+    content: "";
+    height: 200%;
+    width: 200%;
+}
+
+.wave:before {
+    border-radius: 45%;
+    background-color: red !important;
+    animation: animate 5s linear infinite;
+    right: 0;
+}
+
+.wave:after {
+    border-radius: 45%;
+    background-color: red !important;
+    animation: animate 5s linear infinite;
+    left: 0;
+}
+
+@keyframes animate {
+    /* 0% {
+      transform: tra;
+    }
+    100% {
+      transform: translate(-50%, -75%) rotate(360deg);
+    } */
+}
+
+.rangeslider-mask-min,
+.rangeslider-mask-max {
+    fill: #94a3b8 !important;
+    fill-opacity: 0.3 !important;
+}
+
+.dark .rangeslider-mask-min,
+.dark .rangeslider-mask-max {
+    fill: #64748b !important;
+    fill-opacity: 0.3 !important;
+}
+
+
+/* Marker====*/
+.tooltip-vehicle {
+    margin-top: -18px !important;
+    border: 1px solid #f6f6f6 !important;
+    font-size: 10px !important;
+    text-align: center !important;
+    color: #fff !important;
+    padding: 2px 5px !important;
+    white-space: nowrap !important;
+    background-color: rgb(139 92 246 / var(--tw-bg-opacity)) !important;
+    border-radius: 0 !important;
+    margin-left: 25px !important;
+
+}
+
+.tooltip-vehicle::before {
+    content: none !important;
+}
+
+.marker-pin {
+    width: 30px;
+    height: 30px;
+    border-radius: 50% 50% 50% 0;
+    position: absolute;
+    transform: rotate(-45deg);
+    left: 50%;
+    top: 50%;
+}
+
+.marker-pin svg {
+    position: absolute;
+    width: 18px;
+    font-size: 18px;
+    left: 0;
+    right: 0;
+    margin: 8px auto;
+    transform: rotate(45deg);
+    text-align: center;
+}
+
+.marker-pin::after {
+    content: '';
+    width: 24px;
+    height: 24px;
+    margin: 3px 0 0 3px;
+    background-color: white;
+    position: absolute;
+    border-radius: 50%;
+}
+
+.leaflet-div-icon {
+    border: none !important;
+    background: none !important;
+}
+
+.tooltip-marker {
+    top: -38px;
+    padding: 2px 6px !important;
+}
