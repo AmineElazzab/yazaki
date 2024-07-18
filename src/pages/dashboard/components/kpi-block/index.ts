@@ -1,0 +1,1 @@
+export * from './kpi-block.component.tsx';

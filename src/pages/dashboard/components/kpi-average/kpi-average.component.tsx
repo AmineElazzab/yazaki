@@ -43,7 +43,7 @@ const KpiAverageComponent = ({
             <span className="text-xs text-gray-600">vs last month</span>
           </div>
         </div>
-        <div className="flex items-end justify-end md:w-full :w-[40%]">
+        <div className="flex items-end justify-end w-full">
           <KpiAverageLineChartComponent
             strokeColor={chartColor}
             data={detailsKpi}
