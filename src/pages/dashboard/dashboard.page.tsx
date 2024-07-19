@@ -134,7 +134,7 @@ export function DashboardPage() {
           { month: "Dec", opened: 0, closed: 0 },
         ]}
       />
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-y-5 lg:gap-x-5">
       <div className="grid grid-rows-1 md:grid-rows-2 gap-5 col-span-1">
       <KpiBlockComponent
           name="Non respect of pickup station"

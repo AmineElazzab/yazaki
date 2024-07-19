@@ -47,8 +47,13 @@ const AttainmentTimeBar: React.FC<AttainmentTimeBarProps> = ({
             vertical={false}
             stroke="#f3f6f4"
           />
-          <XAxis dataKey="name" axisLine={false} tickLine={false} />
-          <YAxis axisLine={false} tickLine={false} >
+          <XAxis dataKey="month" axisLine={false} tickLine={false}
+            tick={{ fill: "#475467", fontSize: "12px", fontWeight: 500 }}
+          />
+          <YAxis axisLine={false} tickLine={false} 
+                      tick={{ fill: "#475467", fontSize: "12px", fontWeight: 500 }}
+
+          > 
             <Label
               value="Number of claims"
               offset={0}

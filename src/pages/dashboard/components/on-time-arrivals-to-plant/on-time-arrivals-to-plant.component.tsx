@@ -22,11 +22,7 @@ export const ArrivalsTimeToPlantComponent = ({name, description, data}: Props) =
                     </span>
                 </div>
             </div>
-       <ArrivalsTimeBar 
-         data={data}
-
-
-       />
+       <ArrivalsTimeBar data={data}/>
    </div>
 )
 }

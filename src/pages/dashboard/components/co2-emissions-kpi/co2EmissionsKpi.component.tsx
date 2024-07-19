@@ -1,4 +1,3 @@
-import React from 'react';
 
 type Props = {
     totalCo2Emissions: number;
@@ -9,7 +8,7 @@ type Props = {
 
 export const Co2EmissionsKpiComponent = ({ name, imagePath, totalCo2Emissions, averageCo2Emissions }: Props) => {
     return (
-        <div className="grid grid-cols-1 md:grid-cols-3 rounded-2xl bg-white p-5 border border-[#EAECF0] shadow-md gap-y-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 rounded-2xl bg-white p-5 border border-[#EAECF0] shadow-md ">
             <div className="md:col-span-1">
                 <p className="text-xl font-medium text-gray-600">{name}</p>
                 <div className="flex items-center justify-between gap-2 mt-2">
