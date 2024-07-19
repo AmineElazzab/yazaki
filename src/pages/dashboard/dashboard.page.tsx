@@ -1,12 +1,12 @@
+import C02 from "../../assets/C02.svg";
+import Deviation from "../../assets/Deviation.svg";
+import Station from "../../assets/Station.svg";
 import { AttainmentComponent } from "./components/attainment/attainment.component.tsx";
+import { Co2EmissionsKpiComponent } from "./components/co2-emissions-kpi/co2EmissionsKpi.component.tsx";
 import KpiAverageComponent from "./components/kpi-average/kpi-average.component.tsx";
 import { KpiBlockComponent } from "./components/kpi-block/index.ts";
 import { MonthlyBusesDensityComponent } from "./components/monthly-buses-density/index.ts";
 import { ArrivalsTimeToPlantComponent } from "./components/on-time-arrivals-to-plant/on-time-arrivals-to-plant.component.tsx";
-import Station from "../../assets/Station.svg";
-import C02 from "../../assets/C02.svg";
-import Deviation from "../../assets/Deviation.svg";
-import { Co2EmissionsKpiComponent } from "./components/co2-emissions-kpi/co2EmissionsKpi.component.tsx";
 
 
 export function DashboardPage() {

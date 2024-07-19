@@ -71,37 +71,38 @@ const MonthlyBusesDensityBar: React.FC<MonthlyBusesDensityBarProps> = ({ data })
           <Tooltip
           cursor={false}
           content={({ active, payload }) => {
-              if (active && payload && payload.length) {
-                return (
-                  <div
-                    style={{
-                      background: "#fff",
-                      border: "none",
-                      borderRadius: "5px",
-                      boxShadow: "4px 4px 4px 4px rgba(0, 0, 0, 0.25)",
-                      fontSize: "10px",
-                      paddingLeft: "10px",
-                      paddingRight: "10px",
-                      paddingTop: "5px",
-                      paddingBottom: "3px",
-                    }}
-                  >
-                    <div className="flex flex-col gap-2">
-                      <div className="flex items-center gap-1">
-                        <div style={{ width: "10px", height: "10px", backgroundColor: "#B692F6", borderRadius: "50%" }}></div>
-                        <span className="text-xs font-semibold">{`Pickup: ${payload[0].value}`}</span>
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <div style={{ width: "10px", height: "10px", backgroundColor: "#EAECF0", borderRadius: "50%" }}></div>
-                        <span className="text-xs font-semibold">{`Drop-off: ${payload[1].value}`}</span>
-                      </div>
+            if (active && payload && payload.length) {
+              return (
+                <div
+                  style={{
+                    background: "#fff",
+                    border: "none",
+                    borderRadius: "8px",
+                    boxShadow: "4px 4px 4px 4px rgba(0, 0, 0, 0.25)",
+                    fontSize: "10px",
+                    padding: "10px",
+                  }}
+                >
+                  <div style={{ display: 'flex', alignItems: 'center', marginBottom: "10px"}}>
+                    <div style={{ width: "10px", height: "10px", backgroundColor: "#EAECF0", borderRadius: "50%", marginRight: '5px' }}></div>
+                    <div className='flex gap-x-5'>
+                      <span style={{ marginRight: 'auto', fontSize: '12px', fontWeight: '500' }}>Drop-off:</span>
+                      <span style={{ fontSize: '12px', fontWeight: '500' }}>{payload[1].value}</span>
                     </div>
                   </div>
-                );
-              }
-              return null;
-            }}
-          />
+                  <div style={{ display: 'flex', alignItems: 'center'}}>
+                    <div style={{ width: "10px", height: "10px", backgroundColor: "#B692F6", borderRadius: "50%", marginRight: '5px' }}></div>
+                    <div className='flex gap-x-5 w-full'>
+                      <span style={{ marginRight: 'auto', fontSize: '12px', fontWeight: '500' }}>Pickup:</span>
+                      <span style={{ fontSize: '12px', fontWeight: '500'}}>{payload[0].value}</span>
+                    </div>
+                  </div>
+                </div>
+              );
+            }
+            return null;
+          }}
+        />
           <Bar dataKey="pickup" fill="#B692F6" barSize={10} radius={[10, 10, 0, 0]} />
           <Bar dataKey="dropOff" fill="#EAECF0" barSize={10} radius={[10, 10, 0, 0]} />
           <ReferenceLine

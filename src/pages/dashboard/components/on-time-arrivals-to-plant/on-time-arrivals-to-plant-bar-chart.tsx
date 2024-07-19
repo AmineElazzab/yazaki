@@ -35,12 +35,16 @@ const ArrivalsTimeBar: React.FC<ArrivalsTimeBarProps> = ({ data }) => {
         }}
       >
         <CartesianGrid vertical={false} stroke="#f3f6f4" />
-        <XAxis dataKey="month" axisLine={false} tickLine={false}
-                    tick={{ fill: "#475467", fontSize: "12px", fontWeight: 500 }}
-
+        <XAxis 
+          dataKey="month" 
+          axisLine={false} 
+          tickLine={false}
+          tick={{ fill: "#475467", fontSize: "12px", fontWeight: 500 }}
         />
-        <YAxis axisLine={false} tickLine={false}
-                    tick={{ fill: "#475467", fontSize: "12px", fontWeight: 500 }}
+        <YAxis 
+          axisLine={false} 
+          tickLine={false}
+          tick={{ fill: "#475467", fontSize: "12px", fontWeight: 500 }}
         >
           <Label
             value="Number of Buses"
@@ -58,37 +62,44 @@ const ArrivalsTimeBar: React.FC<ArrivalsTimeBarProps> = ({ data }) => {
         <Tooltip
           cursor={false}
           content={({ active, payload }) => {
-              if (active && payload && payload.length) {
-                return (
-                  <div
-                    style={{
-                      background: "#fff",
-                      border: "none",
-                      borderRadius: "5px",
-                      boxShadow: "4px 4px 4px 4px rgba(0, 0, 0, 0.25)",
-                      fontSize: "10px",
-                      paddingLeft: "10px",
-                      paddingRight: "10px",
-                      paddingTop: "5px",
-                      paddingBottom: "3px",
-                    }}
-                  >
-                    <div className="flex flex-col gap-2">
-                      <div className="flex items-center gap-1">
-                        <div style={{ width: "10px", height: "10px", backgroundColor: "#B692F6", borderRadius: "50%" }}></div>
-                        <span className="text-xs font-semibold">{`Pickup: ${payload[0].value}`}</span>
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <div style={{ width: "10px", height: "10px", backgroundColor: "#EAECF0", borderRadius: "50%" }}></div>
-                        <span className="text-xs font-semibold">{`Drop-off: ${payload[1].value}`}</span>
-                      </div>
+            if (active && payload && payload.length) {
+              return (
+                <div
+                  style={{
+                    background: "#fff",
+                    border: "none",
+                    borderRadius: "8px",
+                    boxShadow: "4px 4px 4px 4px rgba(0, 0, 0, 0.25)",
+                    fontSize: "10px",
+                    padding: "10px",
+                  }}
+                >
+                  <div style={{ display: 'flex', alignItems: 'center', marginBottom:"10px"}}>
+                    <div style={{ width: "10px", height: "10px", backgroundColor: "#EAECF0", borderRadius: "50%", marginRight: '5px' }}></div>
+                    <div className='flex gap-x-5'>
+                    <span style={{ marginRight: 'auto', fontSize: '12px', fontWeight: '500' }}>
+                      On-time arrivals (after 15 min):
+                    </span>
+                    <span style={{ fontSize: '12px', fontWeight: '500' }}>
+                      {payload[1].value}
+                    </span>
                     </div>
                   </div>
-                );
-              }
-              return null;
-            }}
-          />
+                  <div style={{ display: 'flex', alignItems: 'center' }}>
+                    <div style={{ width: "10px", height: "10px", backgroundColor: "#B692F6", borderRadius: "50%", marginRight: '5px' }}></div>
+                    <span style={{ marginRight: 'auto', fontSize: '12px', fontWeight: '500' }}>
+                      Late arrivals (before 15 min):
+                    </span>
+                    <span style={{ fontSize: '12px', fontWeight: '500' }}>
+                      {payload[0].value}
+                    </span>
+                  </div>
+                </div>
+              );
+            }
+            return null;
+          }}
+        />
         <Bar dataKey="lateArrivalsBusesCount" stackId="a" fill="#B692F6" barSize={20} />
         <Bar dataKey="onTimeArrivalsBusesCount" stackId="a" fill="#EAECF0" barSize={20} radius={[5, 5, 0, 0]} />
       </BarChart>

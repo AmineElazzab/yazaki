@@ -1,3 +1,4 @@
+import { FaArrowTrendDown } from "react-icons/fa6";
 
 type Props = {
     totalCo2Emissions: number;
@@ -15,7 +16,7 @@ export const Co2EmissionsKpiComponent = ({ name, imagePath, totalCo2Emissions, a
                     <img src={imagePath} alt="icon" />
                 </div>
             </div>
-            <div className="md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-4 mt-14">
                 <div className="rounded-2xl bg-white p-5 border border-[#EAECF0] shadow-sm">
                     <div className="flex items-end">
                         <p className="text-3xl font-semibold">{totalCo2Emissions}</p>
@@ -31,8 +32,11 @@ export const Co2EmissionsKpiComponent = ({ name, imagePath, totalCo2Emissions, a
                     <p className="text-sm font-medium text-gray-600 mt-2">Average CO2 emissions</p>
                 </div>
                 <div className="rounded-2xl bg-white p-5 border border-[#EAECF0] shadow-sm md:col-span-2">
-                    <p className="text-sm font-medium text-gray-600">Carbon Footprint Reduction</p>
-                    <p className="text-sm">
+                    <div className="flex gap-3">
+              <FaArrowTrendDown color="#079455" />
+                    <p className="text-sm font-medium text-gray-700">Carbon Footprint Reduction</p>
+                    </div>
+                    <p className="text-sm ml-7 w-[50%]">
                         Achieved through transportation service improvements
                     </p>
                 </div>
