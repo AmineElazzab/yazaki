@@ -22,6 +22,7 @@ interface ArrivalsTimeBarProps {
 
 const ArrivalsTimeBar: React.FC<ArrivalsTimeBarProps> = ({ data }) => {
   return (
+    <div   style={{ width: "100%", height: "90%" }}>
     <ResponsiveContainer width="100%" height="100%">
       <BarChart
         width={500}
@@ -54,7 +55,7 @@ const ArrivalsTimeBar: React.FC<ArrivalsTimeBarProps> = ({ data }) => {
             style={{
               textAnchor: 'middle',
               color: '#475467',
-              fontSize: '14px',
+              fontSize: '12px',
               fontWeight: 500,
             }}
           />
@@ -104,6 +105,7 @@ const ArrivalsTimeBar: React.FC<ArrivalsTimeBarProps> = ({ data }) => {
         <Bar dataKey="onTimeArrivalsBusesCount" stackId="a" fill="#EAECF0" barSize={20} radius={[5, 5, 0, 0]} />
       </BarChart>
     </ResponsiveContainer>
+    </div>
   );
 };
 

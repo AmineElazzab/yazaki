@@ -12,23 +12,23 @@ import { ArrivalsTimeToPlantComponent } from "./components/on-time-arrivals-to-p
 export function DashboardPage() {
   return (
     <div className="flex flex-col h-full gap-5 bg-[#F9FAFB] p-10">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-5">
         <KpiAverageComponent
           name="Average buses in operation"
           value={103}
           detailsKpi={[
-            { count: 400 },
-            { count: 300 },
-            { count: 200 },
-            { count: 278 },
-            { count: 189 },
-            { count: 239 },
-            { count: 349 },
-            { count: 278 },
-            { count: 400 },
-            { count: 300 },
-            { count: 200 },
-            { count: 278 },
+            { count: 199, month: "Jan" },
+            { count: 300, month: "Feb" },
+            { count: 200, month: "Mar" },
+            { count: 278, month: "Apr" },
+            { count: 189, month: "May" },
+            { count: 239, month: "Jun" },
+            { count: 349, month: "Jul" },
+            { count: 278, month: "Aug" },
+            { count: 400, month: "Sep" },
+            { count: 300, month: "Oct" },
+            { count: 200, month: "Nov" },
+            { count: 278, month: "Dec" },
           ]}
           versusLastMonthPercentage={100}
         />
@@ -37,18 +37,18 @@ export function DashboardPage() {
           value={16}
           detailsKpi={
             [
-              { count: 400 },
-              { count: 300 },
-              { count: 200 },
-              { count: 278 },
-              { count: 189 },
-              { count: 239 },
-              { count: 349 },
-              { count: 278 },
-              { count: 400 },
-              { count: 300 },
-              { count: 200 },
-              { count: 278 },
+            { count: 199, month: "Jan" },
+            { count: 300, month: "Feb" },
+            { count: 200, month: "Mar" },
+            { count: 278, month: "Apr" },
+            { count: 189, month: "May" },
+            { count: 239, month: "Jun" },
+            { count: 349, month: "Jul" },
+            { count: 278, month: "Aug" },
+            { count: 400, month: "Sep" },
+            { count: 300, month: "Oct" },
+            { count: 200, month: "Nov" },
+            { count: 278, month: "Dec" },
             ]
           
           }
@@ -58,39 +58,58 @@ export function DashboardPage() {
           name="Excessive speeding"
           value={4}
           detailsKpi={[
-            { count: 400 },
-            { count: 300 },
-            { count: 200 },
-            { count: 278 },
-            { count: 189 },
-            { count: 239 },
-            { count: 349 },
-            { count: 278 },
-            { count: 400 },
-            { count: 300 },
-            { count: 200 },
-            { count: 278 },
+            { count: 199, month: "Jan" },
+            { count: 300, month: "Feb" },
+            { count: 200, month: "Mar" },
+            { count: 278, month: "Apr" },
+            { count: 189, month: "May" },
+            { count: 239, month: "Jun" },
+            { count: 349, month: "Jul" },
+            { count: 278, month: "Aug" },
+            { count: 400, month: "Sep" },
+            { count: 300, month: "Oct" },
+            { count: 200, month: "Nov" },
+            { count: 278, month: "Dec" },
+          ]}
+          versusLastMonthPercentage={-35}
+        />
+        <KpiAverageComponent
+          name="Excessive speeding"
+          value={4}
+          detailsKpi={[
+            { count: 199, month: "Jan" },
+            { count: 300, month: "Feb" },
+            { count: 200, month: "Mar" },
+            { count: 278, month: "Apr" },
+            { count: 189, month: "May" },
+            { count: 239, month: "Jun" },
+            { count: 349, month: "Jul" },
+            { count: 278, month: "Aug" },
+            { count: 400, month: "Sep" },
+            { count: 300, month: "Oct" },
+            { count: 200, month: "Nov" },
+            { count: 278, month: "Dec" },
           ]}
           versusLastMonthPercentage={-35}
         />
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 h-auto md:h-96 gap-5">
+      <div className="grid grid-cols-1 md:grid-cols-2 h-auto gap-5">
         <MonthlyBusesDensityComponent
           name="Monthly bus density"
           averageDensity={95}
           data={[
-            { month: "01", pickup: 78, dropOff: 90 },
-            { month: "02", pickup: 70, dropOff: 60 },
-            { month: "03", pickup: 80, dropOff: 70 },
-            { month: "04", pickup: 90, dropOff: 80 },
-            { month: "05", pickup: 100, dropOff: 90 },
-            { month: "06", pickup: 110, dropOff: 100 },
-            { month: "07", pickup: 120, dropOff: 110 },
-            { month: "08", pickup: 130, dropOff: 120 },
-            { month: "09", pickup: 140, dropOff: 130 },
-            { month: "10", pickup: 150, dropOff: 140 },
-            { month: "11", pickup: 160, dropOff: 150 },
-            { month: "12", pickup: 170, dropOff: 160 },
+            { month: 1, pickup: 10, dropOff: 80 },
+            { month: 2, pickup: 90, dropOff: 70 },
+            { month: 3, pickup: 70, dropOff: 60 },
+            { month: 4, pickup: 20, dropOff: 30 },
+            { month: 5, pickup: 40, dropOff: 50 },
+            { month: 6, pickup: 60, dropOff: 40 },
+            { month: 7, pickup: 80, dropOff: 20 },
+            { month: 8, pickup: 100, dropOff: 50 },
+            { month: 9, pickup: 90, dropOff: 10 },
+            { month: 10, pickup: 80, dropOff: 20 },
+            { month: 11, pickup: 70, dropOff: 30 },
+            { month: 12, pickup: 60, dropOff: 40 },
           ]}
         />
         <ArrivalsTimeToPlantComponent
@@ -120,21 +139,21 @@ export function DashboardPage() {
 
         ]}
         claims={[
-          { month: "Jan", opened: 100, closed: 80 },
-          { month: "Feb", opened: 90, closed: 70 },
-          { month: "Mar", opened: 80, closed: 60 },
-          { month: "Apr", opened: 70, closed: 50 },
-          { month: "May", opened: 60, closed: 40 },
-          { month: "Jun", opened: 50, closed: 30 },
-          { month: "Jul", opened: 40, closed: 20 },
-          { month: "Aug", opened: 30, closed: 10 },
-          { month: "Sep", opened: 20, closed: 0 },
-          { month: "Oct", opened: 10, closed: 0 },
-          { month: "Nov", opened: 0, closed: 0 },
-          { month: "Dec", opened: 0, closed: 0 },
+          { month: "Jan", opened: 100, closed: 80 , total: 180},
+          { month: "Feb", opened: 60, closed: 100 , total: 160},
+          { month: "Mar", opened: 80, closed: 60 , total: 140},
+          { month: "Apr", opened: 90, closed: 70 , total: 160},
+          { month: "May", opened: 70, closed: 90 , total: 160},
+          { month: "Jun", opened: 80, closed: 60 , total: 140},
+          { month: "Jul", opened: 90, closed: 70 , total: 160},
+          { month: "Aug", opened: 100, closed: 80 , total: 180},
+          { month: "Sep", opened: 60, closed: 100 , total: 160},
+          { month: "Oct", opened: 80, closed: 60 , total: 140},
+          { month: "Nov", opened: 90, closed: 70 , total: 160},
+          { month: "Dec", opened: 70, closed: 90 , total: 160},
         ]}
       />
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-y-5 lg:gap-x-5">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-y-5 lg:gap-x-5 md:gap-x-5">
       <div className="grid grid-rows-1 md:grid-rows-2 gap-5 col-span-1">
       <KpiBlockComponent
           name="Non respect of pickup station"

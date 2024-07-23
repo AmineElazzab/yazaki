@@ -29,8 +29,13 @@ const AttainmentPieChart : React.FC<AttainmentPieChartProps> = ({ data }) => {
         } else if (width >= 480) {
             return 110;
         } else {
-            return 90;
+            return 90;  
         }
+    };
+
+    const getColor = (name: string) => {
+        const index = data.findIndex(item => item.name === name);
+        return COLORS[index % COLORS.length];
     };
 
     return (
@@ -50,17 +55,21 @@ const AttainmentPieChart : React.FC<AttainmentPieChartProps> = ({ data }) => {
                     ))}
                 </Pie>
                 <Tooltip
-                    cursor={{ fill: "transparent" }}
-                    contentStyle={{
-                        background: "#fff",
-                        border: "none",
-                        borderRadius: "5px",
-                        boxShadow: "4px 4px 4px 4px rgba(0, 0, 0, 0.25)",
-                        fontSize: "10px",
-                        paddingLeft: "10px",
-                        paddingRight: "10px",
-                        paddingTop: "5px",
-                        paddingBottom: "3px",
+                    cursor={false}
+                    content={({ active, payload }) => {
+                        if (active && payload && payload.length) {
+                            const { name, value } = payload[0].payload;
+                            return (
+                                <div className="bg-white p-2 rounded-lg shadow-md flex items-center">
+                                    <div style={{ width: "10px", height: "10px", backgroundColor: getColor(name), borderRadius: "50%", marginRight: '5px' }}></div>
+                                    <div className='flex gap-x-5'>
+                                        <span className='text-xs font-medium'>{name}:</span>
+                                        <span className='text-xs font-medium'>{value}</span>
+                                    </div>
+                                </div>
+                            );
+                        }
+                        return null;
                     }}
                 />
             </PieChart>

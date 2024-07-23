@@ -7,6 +7,7 @@ type Props = {
         month: string;
         opened: number;
         closed: number;
+        total: number;
     }[];
     categories: {
         name: string;
@@ -14,7 +15,7 @@ type Props = {
     }[];
 };
 
-export const AttainmentComponent = ({ name, claims, categories }: Props) => {
+export const    AttainmentComponent = ({ name, claims, categories }: Props) => {
     return (
         <div className="gap-6 rounded-2xl bg-white p-5 border border-[#EAECF0] shadow-md">
             <div className="text-base font-semibold text-[#101828]">{name}</div>

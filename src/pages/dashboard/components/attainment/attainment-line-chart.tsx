@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import {
   Area,
   AreaChart,
@@ -7,32 +8,41 @@ import {
   Tooltip,
   XAxis,
   YAxis,
+  ReferenceLine
 } from "recharts";
 
 interface DataObject {
-    month: string;
-    opened: number;
-    closed: number;
-    }
+  month: string;
+  opened: number;
+  closed: number;
+}
 
 interface AttainmentTimeBarProps {
-    data: DataObject[];
-    strokeColor?: string;
-    fillColor?: string;
-    }
+  data: DataObject[];
+  strokeColor?: string;
+  fillColor?: string;
+}
 
 const AttainmentTimeBar: React.FC<AttainmentTimeBarProps> = ({
   data,
   strokeColor = "#B692F6",
   fillColor = "#B692F6",
 }) => {
+  const [selectedMonth, setSelectedMonth] = useState<string | null>(null);
+
+  const handleClick = (e: any) => {
+    if (e && e.activeLabel) {
+      setSelectedMonth(e.activeLabel);
+    }
+  };
 
   return (
     <div style={{ width: "100%", height: 300 }}>
       <ResponsiveContainer>
         <AreaChart
           data={data}
-          margin={{ top: 10, right: 0, left: 10, bottom: 0 }}
+          margin={{ top: 10, right: 0, left: 10, bottom: 10 }}
+          onClick={handleClick}
         >
           <defs>
             <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
@@ -49,51 +59,73 @@ const AttainmentTimeBar: React.FC<AttainmentTimeBarProps> = ({
           />
           <XAxis dataKey="month" axisLine={false} tickLine={false}
             tick={{ fill: "#475467", fontSize: "12px", fontWeight: 500 }}
-          />
+          >
+            <Label
+              value="Months"
+              offset={0}
+              position="bottom"
+              style={{ textAnchor: "middle", color: "#475467", fontSize: "12px", fontWeight: 500 }}
+            />
+          </XAxis>
           <YAxis axisLine={false} tickLine={false} 
-                      tick={{ fill: "#475467", fontSize: "12px", fontWeight: 500 }}
-
+            tick={{ fill: "#475467", fontSize: "12px", fontWeight: 500 }}
           > 
             <Label
               value="Number of claims"
               offset={0}
               angle={-90}
               position="insideLeft"
-              style={{ textAnchor: "middle", color: "#475467", fontSize: "14px", fontWeight: 500 }}
+              style={{ textAnchor: "middle", color: "#475467", fontSize: "12px", fontWeight: 500 }}
             />
-            </YAxis>
+          </YAxis>
+          {selectedMonth && (
+            <ReferenceLine x={selectedMonth} stroke="#8884d8" strokeDasharray="5 5"
+            />
+          )}
           <Tooltip
-            cursor={{ fill: "transparent" }}
-            contentStyle={{
-              background: "#B692F6",
-              border: "none",
-              borderRadius: "5px",
-              boxShadow: "4px 4px 4px 4px rgba(0, 0, 0, 0.25)",
-              fontSize: "10px",
-              paddingLeft: "30px",
-              paddingRight: "30px",
-              paddingTop: "5px",
-              paddingBottom: "3px",
-            }}
-            labelStyle={{
-              color: "#fff",
-              fontSize: "8px",
-              lineHeight: "8px",
-              fontWeight: 300,
-            }}
-            itemStyle={{
-              color: "#fff",
-              fontSize: "8px",
-              lineHeight: "8px",
-              fontWeight: 500,
-            }}
-            wrapperStyle={{
-              border: "none",
-              borderRadius: "0",
-              boxShadow: "none",
-              color: "#B5B5BB",
-              fontSize: "10px",
-              padding: "0",
+            cursor={false}
+            content={({ active, payload }) => {
+              if (active && payload && payload.length) {
+                const opened = Number(payload[0]?.payload?.opened ?? 0);
+                const closed = Number(payload[0]?.payload?.closed ?? 0);
+                const total = opened + closed;
+
+                return (
+                  <div
+                    style={{
+                      background: "#fff",
+                      border: "none",
+                      borderRadius: "8px",
+                      boxShadow: "4px 4px 4px 4px rgba(0, 0, 0, 0.25)",
+                      fontSize: "10px",
+                      padding: "10px",
+                    }}
+                  >
+                    <div className="flex items-center mb-2">
+                      <div style={{ width: "10px", height: "10px", backgroundColor: "#17b26a", borderRadius: "50%", marginRight: '5px' }}></div>
+                      <div className="flex justify-between w-full gap-x-5">
+                        <span style={{ marginRight: 'auto', fontSize: '12px', fontWeight: '500' }}>Opened:</span>
+                        <span style={{ fontSize: '12px', fontWeight: '500' }}>{opened}</span>
+                      </div>
+                    </div>
+                    <div className="flex items-center mb-2">
+                      <div style={{ width: "10px", height: "10px", backgroundColor: "#f04438", borderRadius: "50%", marginRight: '5px' }}></div>
+                      <div className="flex justify-between w-full">
+                        <span style={{ marginRight: 'auto', fontSize: '12px', fontWeight: '500' }}>Closed:</span>
+                        <span style={{ fontSize: '12px', fontWeight: '500' }}>{closed}</span>
+                      </div>
+                    </div>
+                    <div className="flex items-center mb-2">
+                      <div style={{ width: "10px", height: "10px", backgroundColor: "#7f56d9", borderRadius: "50%", marginRight: '5px' }}></div>
+                      <div className="flex justify-between w-full">
+                        <span style={{ marginRight: 'auto', fontSize: '12px', fontWeight: '500' }}>Total:</span>
+                        <span style={{ fontSize: '12px', fontWeight: '500' }}>{total}</span>
+                      </div>
+                    </div>
+                  </div>
+                );
+              }
+              return null;
             }}
           />
           <Area
