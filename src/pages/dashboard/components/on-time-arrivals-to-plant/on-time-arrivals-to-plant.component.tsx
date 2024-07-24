@@ -11,7 +11,7 @@ type Props = {
 }
 export const ArrivalsTimeToPlantComponent = ({name, description, data}: Props) => {
     return(
-    <div className="flex flex-col gap-6 rounded-2xl bg-white p-5 border border-[#EAECF0] shadow-md h-80 justify-center">
+    <div className="flex flex-col gap-6 rounded-2xl bg-white p-5 border border-[#EAECF0] shadow-sm h-80 justify-center">
                 <div>
                 <div className="flex gap-2 text-[#101828] items-center pl-4">
                     <p className="text-lg font-semibold">

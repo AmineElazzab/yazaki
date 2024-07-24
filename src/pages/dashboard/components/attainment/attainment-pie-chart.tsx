@@ -60,11 +60,11 @@ const AttainmentPieChart : React.FC<AttainmentPieChartProps> = ({ data }) => {
                         if (active && payload && payload.length) {
                             const { name, value } = payload[0].payload;
                             return (
-                                <div className="bg-white p-2 rounded-lg shadow-md flex items-center">
+                                <div className="bg-white p-2 rounded-lg shadow-sm flex items-center">
                                     <div style={{ width: "10px", height: "10px", backgroundColor: getColor(name), borderRadius: "50%", marginRight: '5px' }}></div>
-                                    <div className='flex gap-x-5'>
-                                        <span className='text-xs font-medium'>{name}:</span>
-                                        <span className='text-xs font-medium'>{value}</span>
+                                    <div className='flex gap-x-5 '>
+                                        <span className='font-medium text-[10px]'>{name}:</span>
+                                        <span className='font-medium text-[10px]'>{value}</span>
                                     </div>
                                 </div>
                             );

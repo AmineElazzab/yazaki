@@ -15,7 +15,6 @@ interface CustomDotProps extends DotProps {}
 
 const CustomDot: React.FC<CustomDotProps> = (props) => {
   const { cx, cy, stroke } = props;
-  console.log('CustomDot Rendered', { cx, cy, stroke });
 
   return (
     <g>
@@ -43,8 +42,6 @@ const KpiAverageLineChartComponent: React.FC<KpiAverageLineChartProps> = ({
   data,
   strokeColor = "green",
 }) => {
-  console.log("Data:", data);
-
   return (
     <div style={{ width: "100%", height: "100%" }}>
       <ResponsiveContainer width="100%" height={80}>
@@ -63,7 +60,6 @@ const KpiAverageLineChartComponent: React.FC<KpiAverageLineChartProps> = ({
                 console.log("Tooltip Payload", payload);
                 const { month, count } = payload[0].payload;
                 const value = payload[0].value;
-
                 return (
                   <div className="bg-white p-2 rounded-md shadow-md flex items-center">
                     <div
@@ -75,9 +71,9 @@ const KpiAverageLineChartComponent: React.FC<KpiAverageLineChartProps> = ({
                         marginRight: "5px",
                       }}
                     ></div>
-                    <div className="flex gap-x-5 font-medium text-xs">
-                      <span className="text-xs font-medium">{month}:</span>
-                      <span className="text-xs font-medium">{value}</span>
+                    <div className="flex gap-x-5 font-medium text-[10px]">
+                      <span className="font-medium">{month}:</span>
+                      <span className="font-medium">{value}</span>
                     </div>
                   </div>
                 );

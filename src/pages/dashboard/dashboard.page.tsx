@@ -8,7 +8,6 @@ import { KpiBlockComponent } from "./components/kpi-block/index.ts";
 import { MonthlyBusesDensityComponent } from "./components/monthly-buses-density/index.ts";
 import { ArrivalsTimeToPlantComponent } from "./components/on-time-arrivals-to-plant/on-time-arrivals-to-plant.component.tsx";
 
-
 export function DashboardPage() {
   return (
     <div className="flex flex-col h-full gap-5 bg-[#F9FAFB] p-10">
@@ -49,9 +48,7 @@ export function DashboardPage() {
             { count: 300, month: "Oct" },
             { count: 200, month: "Nov" },
             { count: 278, month: "Dec" },
-            ]
-          
-          }
+            ]}
           versusLastMonthPercentage={70}
         />
         <KpiAverageComponent
@@ -136,7 +133,6 @@ export function DashboardPage() {
         categories={[
           { name: "Opened", value: 60 },
           { name: "Closed", value: 40 },
-
         ]}
         claims={[
           { month: "Jan", opened: 100, closed: 80 , total: 180},

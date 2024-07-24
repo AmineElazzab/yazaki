@@ -70,28 +70,26 @@ const ArrivalsTimeBar: React.FC<ArrivalsTimeBarProps> = ({ data }) => {
                     background: "#fff",
                     border: "none",
                     borderRadius: "8px",
-                    boxShadow: "4px 4px 4px 4px rgba(0, 0, 0, 0.25)",
+                    boxShadow: "2px 2px 2px 2px rgba(0, 0, 0, 0.05)",
                     fontSize: "10px",
                     padding: "10px",
                   }}
                 >
-                  <div style={{ display: 'flex', alignItems: 'center', marginBottom:"10px"}}>
-                    <div style={{ width: "10px", height: "10px", backgroundColor: "#EAECF0", borderRadius: "50%", marginRight: '5px' }}></div>
+                  <div className='flex items-center mb-2'>
+                    <div className='w-2 h-2 rounded-full mr-2 bg-[#EAECF0]'></div>
                     <div className='flex gap-x-5'>
-                    <span style={{ marginRight: 'auto', fontSize: '12px', fontWeight: '500' }}>
+                    <span className="font-bold text-[10px] mr-auto">
                       On-time arrivals (after 15 min):
                     </span>
-                    <span style={{ fontSize: '12px', fontWeight: '500' }}>
-                      {payload[1].value}
-                    </span>
+                    <span className="font-bold text-[10px]">{payload[1].value}</span>
                     </div>
                   </div>
-                  <div style={{ display: 'flex', alignItems: 'center' }}>
-                    <div style={{ width: "10px", height: "10px", backgroundColor: "#B692F6", borderRadius: "50%", marginRight: '5px' }}></div>
-                    <span style={{ marginRight: 'auto', fontSize: '12px', fontWeight: '500' }}>
+                  <div className='flex items-center'>
+                    <div className='w-2 h-2 rounded-full mr-2 bg-[#B692F6]'></div>
+                    <span className="font-bold text-[10px] mr-auto">
                       Late arrivals (before 15 min):
                     </span>
-                    <span style={{ fontSize: '12px', fontWeight: '500' }}>
+                    <span className="font-bold text-[10px]">
                       {payload[0].value}
                     </span>
                   </div>

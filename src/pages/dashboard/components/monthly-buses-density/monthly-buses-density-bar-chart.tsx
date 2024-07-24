@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   Bar,
   BarChart,
@@ -86,46 +86,28 @@ const MonthlyBusesDensityBar: React.FC<MonthlyBusesDensityBarProps> = ({ data })
               if (active && payload && payload.length) {
                 return (
                   <div
-                    style={{
-                      background: "#fff",
-                      border: "none",
-                      borderRadius: "8px",
-                      boxShadow: "4px 4px 4px 4px rgba(0, 0, 0, 0.25)",
-                      fontSize: "10px",
-                      padding: "10px",
-                    }}
+                  style={{
+                    background: "#fff",
+                    border: "none",
+                    borderRadius: "8px",
+                    boxShadow: "2px 2px 2px 2px rgba(0, 0, 0, 0.05)",
+                    fontSize: "10px",
+                    padding: "10px",
+                  }}
                   >
                     <div className="flex items-center mb-2">
-                      <div
-                        style={{
-                          width: "10px",
-                          height: "10px",
-                          backgroundColor: "#EAECF0",
-                          borderRadius: "50%",
-                          marginRight: "5px",
-                        }}
-                      ></div>
+                      <div className="w-2 h-2 rounded-full mr-2 bg-[#EAECF0]"></div>
                       <div className="flex gap-x-5">
-                        <span style={{ marginRight: "auto", fontSize: "12px", fontWeight: "500" }}>
+                        <span className="font-medium text-[10px] mr-auto">
                           Drop-off:
                         </span>
-                        <span style={{ fontSize: "12px", fontWeight: "500" }}>{payload[1].value}</span>
+                        <span className="font-medium text-[10px]">{payload[1].value}</span>
                       </div>
                     </div>
-                    <div style={{ display: "flex", alignItems: "center" }}>
-                      <div
-                        style={{
-                          width: "10px",
-                          height: "10px",
-                          backgroundColor: "#B692F6",
-                          borderRadius: "50%",
-                          marginRight: "5px",
-                        }}
-                      ></div>
-                      <div className="flex gap-x-5 w-full">
-                        <span style={{ marginRight: "auto", fontSize: "12px", fontWeight: "500" }}>Pickup:</span>
-                        <span style={{ fontSize: "12px", fontWeight: "500" }}>{payload[0].value}</span>
-                      </div>
+                    <div className="flex items-center" >
+                      <div className="w-2 h-2 rounded-full mr-2 bg-[#B692F6]"></div>
+                        <span className="font-medium text-[10px] mr-auto">Pickup:</span>
+                        <span className="font-medium text-[10px]">{payload[0].value}</span>
                     </div>
                   </div>
                 );

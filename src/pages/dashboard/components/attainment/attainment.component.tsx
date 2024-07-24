@@ -17,7 +17,7 @@ type Props = {
 
 export const    AttainmentComponent = ({ name, claims, categories }: Props) => {
     return (
-        <div className="gap-6 rounded-2xl bg-white p-5 border border-[#EAECF0] shadow-md">
+        <div className="gap-6 rounded-2xl bg-white p-5 border border-[#EAECF0] shadow-sm">
             <div className="text-base font-semibold text-[#101828]">{name}</div>
             <div className=" my-5 border-b-[1.5px] border-[#f3f6f4]"></div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

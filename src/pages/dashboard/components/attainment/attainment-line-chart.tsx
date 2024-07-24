@@ -4,11 +4,11 @@ import {
   AreaChart,
   CartesianGrid,
   Label,
+  ReferenceLine,
   ResponsiveContainer,
   Tooltip,
   XAxis,
-  YAxis,
-  ReferenceLine
+  YAxis
 } from "recharts";
 
 interface DataObject {
@@ -28,12 +28,16 @@ const AttainmentTimeBar: React.FC<AttainmentTimeBarProps> = ({
   strokeColor = "#B692F6",
   fillColor = "#B692F6",
 }) => {
-  const [selectedMonth, setSelectedMonth] = useState<string | null>(null);
+  const [refLineX, setRefLineX] = useState<number | null>(null);
 
-  const handleClick = (e: any) => {
+  const handleMouseMove = (e: any) => {
     if (e && e.activeLabel) {
-      setSelectedMonth(e.activeLabel);
+      setRefLineX(e.activeLabel);
     }
+  };
+
+  const handleMouseLeave = () => {
+    setRefLineX(null);
   };
 
   return (
@@ -42,7 +46,8 @@ const AttainmentTimeBar: React.FC<AttainmentTimeBarProps> = ({
         <AreaChart
           data={data}
           margin={{ top: 10, right: 0, left: 10, bottom: 10 }}
-          onClick={handleClick}
+          onMouseMove={handleMouseMove}
+          onMouseLeave={handleMouseLeave}
         >
           <defs>
             <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
@@ -64,7 +69,7 @@ const AttainmentTimeBar: React.FC<AttainmentTimeBarProps> = ({
               value="Months"
               offset={0}
               position="bottom"
-              style={{ textAnchor: "middle", color: "#475467", fontSize: "12px", fontWeight: 500 }}
+              style={{ textAnchor: "middle", color: "#475467", fontSize: "12px", fontWeight: 500}}
             />
           </XAxis>
           <YAxis axisLine={false} tickLine={false} 
@@ -78,48 +83,47 @@ const AttainmentTimeBar: React.FC<AttainmentTimeBarProps> = ({
               style={{ textAnchor: "middle", color: "#475467", fontSize: "12px", fontWeight: 500 }}
             />
           </YAxis>
-          {selectedMonth && (
-            <ReferenceLine x={selectedMonth} stroke="#8884d8" strokeDasharray="5 5"
-            />
-          )}
+          {refLineX !== null && (
+            <ReferenceLine x={refLineX} stroke="#8884d8" strokeDasharray="5 5" />
+            )
+          }
           <Tooltip
             cursor={false}
             content={({ active, payload }) => {
               if (active && payload && payload.length) {
                 const opened = Number(payload[0]?.payload?.opened ?? 0);
                 const closed = Number(payload[0]?.payload?.closed ?? 0);
-                const total = opened + closed;
-
+                const total = Number(payload[0]?.payload?.total ?? 0);
                 return (
                   <div
                     style={{
                       background: "#fff",
                       border: "none",
                       borderRadius: "8px",
-                      boxShadow: "4px 4px 4px 4px rgba(0, 0, 0, 0.25)",
+                      boxShadow: "2px 2px 2px 2px rgba(0, 0, 0, 0.05)",
                       fontSize: "10px",
                       padding: "10px",
                     }}
                   >
                     <div className="flex items-center mb-2">
-                      <div style={{ width: "10px", height: "10px", backgroundColor: "#17b26a", borderRadius: "50%", marginRight: '5px' }}></div>
-                      <div className="flex justify-between w-full gap-x-5">
-                        <span style={{ marginRight: 'auto', fontSize: '12px', fontWeight: '500' }}>Opened:</span>
-                        <span style={{ fontSize: '12px', fontWeight: '500' }}>{opened}</span>
+                      <div className="w-2 h-2 bg-[#17b26a] rounded-full mr-1"></div>
+                      <div className="flex justify-between w-full gap-x-16">
+                        <span className="text-[10px] font-medium">Opened:</span>
+                        <span className="text-[10px] font-medium">{opened}</span>
                       </div>
                     </div>
                     <div className="flex items-center mb-2">
-                      <div style={{ width: "10px", height: "10px", backgroundColor: "#f04438", borderRadius: "50%", marginRight: '5px' }}></div>
+                      <div className="w-2 h-2 bg-[#f44336] rounded-full mr-1"></div>
                       <div className="flex justify-between w-full">
-                        <span style={{ marginRight: 'auto', fontSize: '12px', fontWeight: '500' }}>Closed:</span>
-                        <span style={{ fontSize: '12px', fontWeight: '500' }}>{closed}</span>
+                        <span className="text-[10px] font-medium">Closed:</span>
+                        <span className="text-[10px] font-medium">{closed}</span>
                       </div>
                     </div>
-                    <div className="flex items-center mb-2">
-                      <div style={{ width: "10px", height: "10px", backgroundColor: "#7f56d9", borderRadius: "50%", marginRight: '5px' }}></div>
+                    <div className="flex items-center">
+                      <div className="w-2 h-2 bg-[#7f56d9] rounded-full mr-1"></div>
                       <div className="flex justify-between w-full">
-                        <span style={{ marginRight: 'auto', fontSize: '12px', fontWeight: '500' }}>Total:</span>
-                        <span style={{ fontSize: '12px', fontWeight: '500' }}>{total}</span>
+                        <span className="text-[10px] font-medium">Total:</span>
+                        <span className="text-[10px] font-medium">{total}</span>
                       </div>
                     </div>
                   </div>
@@ -134,16 +138,19 @@ const AttainmentTimeBar: React.FC<AttainmentTimeBarProps> = ({
             stroke={strokeColor}
             fill="url(#colorUv)"
             fillOpacity={1}
+            isAnimationActive={true}
+            animationBegin={0}
+            animationDuration={1500}
+            animationEasing="ease-in-out"    
+            activeDot={{ r: 7,
+              stroke: "#fff",
+              strokeWidth: 3,
+              fill:"#7f56d9"
+             }}
           />
         </AreaChart>
       </ResponsiveContainer>
     </div>
   );
 };
-
-AttainmentTimeBar.defaultProps = {
-  strokeColor: "#B692F6",
-  fillColor: "#B692F6",
-};
-
 export default AttainmentTimeBar;
